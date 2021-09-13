@@ -4,4 +4,236 @@
         <members>AccountTrigger</members>
         <name>ApexTrigger</name>
     </types>
+    <types>
+        <members>Account.AccountSource</members>
+        <members>Account.Active__c</members>
+        <members>Account.CleanStatus</members>
+        <members>Account.CustomerPriority__c</members>
+        <members>Account.Industry</members>
+        <members>Account.Ownership</members>
+        <members>Account.Rating</members>
+        <members>Account.SLA__c</members>
+        <members>Account.Type</members>
+        <members>Account.UpsellOpportunity__c</members>
+        <members>AccountContactRole.Role</members>
+        <members>Asset.Status</members>
+        <members>AssetRelationship.RelationshipType</members>
+        <members>AuthorizationFormConsent.ConsentCapturedSourceType</members>
+        <members>AuthorizationFormConsent.Status</members>
+        <members>AuthorizationFormText.Locale</members>
+        <members>Campaign.Status</members>
+        <members>Campaign.Type</members>
+        <members>CampaignMember.LeadSource</members>
+        <members>CampaignMember.Salutation</members>
+        <members>CampaignMember.Status</members>
+        <members>CardPaymentMethod.CardCategory</members>
+        <members>CardPaymentMethod.CardType</members>
+        <members>CardPaymentMethod.Status</members>
+        <members>Case.Origin</members>
+        <members>Case.PotentialLiability__c</members>
+        <members>Case.Priority</members>
+        <members>Case.Product__c</members>
+        <members>Case.Reason</members>
+        <members>Case.SLAViolation__c</members>
+        <members>Case.Status</members>
+        <members>Case.Type</members>
+        <members>CaseContactRole.Role</members>
+        <members>CommSubscriptionTiming.Unit</members>
+        <members>ConsumptionRate.PricingMethod</members>
+        <members>ConsumptionSchedule.BillingTermUnit</members>
+        <members>ConsumptionSchedule.RatingMethod</members>
+        <members>ConsumptionSchedule.Type</members>
+        <members>ConsumptionSchedule.UnitOfMeasure</members>
+        <members>Contact.CleanStatus</members>
+        <members>Contact.LeadSource</members>
+        <members>Contact.Level__c</members>
+        <members>ContactPointAddress.AddressType</members>
+        <members>ContactPointAddress.BestTimeToContactTimezone</members>
+        <members>ContactPointConsent.CaptureContactPointType</members>
+        <members>ContactPointConsent.PrivacyConsentStatus</members>
+        <members>ContactPointEmail.BestTimeToContactTimezone</members>
+        <members>ContactPointPhone.BestTimeToContactTimezone</members>
+        <members>ContactPointPhone.PhoneType</members>
+        <members>ContactPointTypeConsent.CaptureContactPointType</members>
+        <members>ContactPointTypeConsent.ContactPointType</members>
+        <members>ContactPointTypeConsent.PrivacyConsentStatus</members>
+        <members>ContactRequest.PreferredChannel</members>
+        <members>ContactRequest.RequestReason</members>
+        <members>ContactRequest.Status</members>
+        <members>ContentVersion.SharingOption</members>
+        <members>ContentVersion.SharingPrivacy</members>
+        <members>Contract.OwnerExpirationNotice</members>
+        <members>Contract.Status</members>
+        <members>ContractContactRole.Role</members>
+        <members>ContractLineItem.Status</members>
+        <members>DandBCompany.CompanyCurrencyIsoCode</members>
+        <members>DandBCompany.CurrencyCode</members>
+        <members>DandBCompany.EmployeesHereReliability</members>
+        <members>DandBCompany.EmployeesTotalReliability</members>
+        <members>DandBCompany.GeoCodeAccuracy</members>
+        <members>DandBCompany.ImportExportAgent</members>
+        <members>DandBCompany.LegalStatus</members>
+        <members>DandBCompany.LocationStatus</members>
+        <members>DandBCompany.MarketingPreScreen</members>
+        <members>DandBCompany.MarketingSegmentationCluster</members>
+        <members>DandBCompany.MinorityOwned</members>
+        <members>DandBCompany.NationalIdType</members>
+        <members>DandBCompany.OutOfBusiness</members>
+        <members>DandBCompany.OwnOrRent</members>
+        <members>DandBCompany.PublicIndicator</members>
+        <members>DandBCompany.SalesVolumeReliability</members>
+        <members>DandBCompany.SmallBusiness</members>
+        <members>DandBCompany.Subsidiary</members>
+        <members>DandBCompany.WomenOwned</members>
+        <members>DigitalWallet.Status</members>
+        <members>EmailMessage.Status</members>
+        <members>EmailMessage.ValidatedFromAddress</members>
+        <members>Entitlement.Status</members>
+        <members>Entitlement.Type</members>
+        <members>Event.EventSubtype</members>
+        <members>Event.ShowAs</members>
+        <members>Image.ImageClass</members>
+        <members>Image.ImageClassObjectType</members>
+        <members>Individual.IndividualsAge</members>
+        <members>Individual.MilitaryService</members>
+        <members>Lead.CleanStatus</members>
+        <members>Lead.Industry</members>
+        <members>Lead.LeadSource</members>
+        <members>Lead.Primary__c</members>
+        <members>Lead.ProductInterest__c</members>
+        <members>Lead.Rating</members>
+        <members>Lead.Status</members>
+        <members>LegalEntity.Status</members>
+        <members>Macro.StartingContext</members>
+        <members>MessagingEndUser.MessageType</members>
+        <members>MessagingEndUser.MessagingConsentStatus</members>
+        <members>MessagingSession.ChannelType</members>
+        <members>MessagingSession.Origin</members>
+        <members>MessagingSession.Status</members>
+        <members>OperatingHours.TimeZone</members>
+        <members>Opportunity.DeliveryInstallationStatus__c</members>
+        <members>Opportunity.LeadSource</members>
+        <members>Opportunity.StageName</members>
+        <members>Opportunity.Type</members>
+        <members>OpportunityContactRole.Role</members>
+        <members>Order.Status</members>
+        <members>Order.Type</members>
+        <members>PartyConsent.Action</members>
+        <members>PartyConsent.CaptureContactPointType</members>
+        <members>PartyConsent.PrivacyConsentStatus</members>
+        <members>Payment.ProcessingMode</members>
+        <members>Payment.SfResultCode</members>
+        <members>Payment.Status</members>
+        <members>Payment.Type</members>
+        <members>PaymentAuthorization.ProcessingMode</members>
+        <members>PaymentAuthorization.SfResultCode</members>
+        <members>PaymentAuthorization.Status</members>
+        <members>PaymentGateway.Status</members>
+        <members>PaymentLineInvoice.HasBeenUnapplied</members>
+        <members>PaymentLineInvoice.Type</members>
+        <members>Product2.Family</members>
+        <members>Product2.QuantityUnitOfMeasure</members>
+        <members>QuickText.Category</members>
+        <members>RecordAction.ActionDefinition</members>
+        <members>RecordAction.ActionType</members>
+        <members>RecordAction.FlowDefinition</members>
+        <members>RecordAction.Pinned</members>
+        <members>RecordAction.Status</members>
+        <members>Refund.ProcessingMode</members>
+        <members>Refund.SfResultCode</members>
+        <members>Refund.Status</members>
+        <members>Refund.Type</members>
+        <members>RefundLinePayment.HasBeenUnapplied</members>
+        <members>RefundLinePayment.Type</members>
+        <members>ResourceAbsence.Type</members>
+        <members>ResourcePreference.PreferenceType</members>
+        <members>ReturnOrder.ShipmentType</members>
+        <members>ReturnOrder.Status</members>
+        <members>ReturnOrderLineItem.ProcessingPlan</members>
+        <members>ReturnOrderLineItem.QuantityUnitOfMeasure</members>
+        <members>ReturnOrderLineItem.ReasonForReturn</members>
+        <members>ReturnOrderLineItem.RepaymentMethod</members>
+        <members>ServiceAppointment.AppointmentType</members>
+        <members>ServiceAppointment.DurationType</members>
+        <members>ServiceAppointment.ParentRecordStatusCategory</members>
+        <members>ServiceAppointment.Status</members>
+        <members>ServiceAppointment.StatusCategory</members>
+        <members>ServiceContract.ApprovalStatus</members>
+        <members>ServiceContract.Status</members>
+        <members>ServiceResource.ResourceType</members>
+        <members>ServiceTerritoryMember.Role</members>
+        <members>ServiceTerritoryMember.TerritoryType</members>
+        <members>Solution.Status</members>
+        <members>Task.CallType</members>
+        <members>Task.Priority</members>
+        <members>Task.RecurrenceRegeneratedType</members>
+        <members>Task.Status</members>
+        <members>Task.TaskSubtype</members>
+        <members>TimeSlot.DayOfWeek</members>
+        <members>TimeSlot.Type</members>
+        <members>UserProvisioningRequest.ApprovalStatus</members>
+        <members>UserProvisioningRequest.Operation</members>
+        <members>UserProvisioningRequest.State</members>
+        <members>WorkOrder.DurationType</members>
+        <members>WorkOrder.Priority</members>
+        <members>WorkOrder.Status</members>
+        <members>WorkOrder.StatusCategory</members>
+        <members>WorkOrderLineItem.DurationType</members>
+        <members>WorkOrderLineItem.Priority</members>
+        <members>WorkOrderLineItem.Status</members>
+        <members>WorkOrderLineItem.StatusCategory</members>
+        <members>WorkType.BlockTimeAfterUnit</members>
+        <members>WorkType.BlockTimeBeforeUnit</members>
+        <members>WorkType.DefaultAppointmentType</members>
+        <members>WorkType.DurationType</members>
+        <members>WorkType.TimeFrameEndUnit</members>
+        <members>WorkType.TimeFrameStartUnit</members>
+        <members>WorkTypeGroup.GroupType</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Admin</members>
+        <members>Analytics Cloud Integration User</members>
+        <members>Analytics Cloud Security User</members>
+        <members>Authenticated Website</members>
+        <members>Chatter External User</members>
+        <members>Chatter Free User</members>
+        <members>Chatter Moderator User</members>
+        <members>ContractManager</members>
+        <members>Cross Org Data Proxy User</members>
+        <members>Custom%3A Marketing Profile</members>
+        <members>Custom%3A Sales Profile</members>
+        <members>Custom%3A Support Profile</members>
+        <members>Customer Community Login User</members>
+        <members>Customer Community Plus Login User</members>
+        <members>Customer Community Plus User</members>
+        <members>Customer Community User</members>
+        <members>Customer Portal Manager Custom</members>
+        <members>Customer Portal Manager Standard</members>
+        <members>External Apps Login User</members>
+        <members>External Identity User</members>
+        <members>Force%2Ecom - App Subscription User</members>
+        <members>Force%2Ecom - Free User</members>
+        <members>Gold Partner User</members>
+        <members>High Volume Customer Portal User</members>
+        <members>HighVolumePortal</members>
+        <members>Identity User</members>
+        <members>MarketingProfile</members>
+        <members>Minimum Access - Salesforce</members>
+        <members>Partner App Subscription User</members>
+        <members>Partner Community Login User</members>
+        <members>Partner Community User</members>
+        <members>PlatformPortal</members>
+        <members>Read Only</members>
+        <members>Silver Partner User</members>
+        <members>SolutionManager</members>
+        <members>Standard</members>
+        <members>StandardAul</members>
+        <members>Work%2Ecom Only User</members>
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>Account.Testing</members>
+        <name>RecordType</name>
+    </types>
 </Package>
