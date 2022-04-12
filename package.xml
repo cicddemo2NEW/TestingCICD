@@ -6,12 +6,14 @@
         <members>Callout</members>
         <members>DataComposerController</members>
         <members>DataMigrationController</members>
+        <members>DataUpdateService</members>
         <members>DeploymentController</members>
         <members>FC_GetFilterRecordsPlugin</members>
         <members>Logger</members>
         <members>LoginToTargetOrg</members>
         <members>MigrationUtilityClass</members>
         <members>QueryResponseJSON</members>
+        <members>RecordComparisonController</members>
         <members>RecordImportController</members>
         <members>RecordImportControllerTestdemo</members>
         <members>TreeGridGenerator</members>
@@ -31,6 +33,7 @@
         <name>ApexTrigger</name>
     </types>
     <types>
+        <members>CompareRecord</members>
         <members>DataComposerComponent</members>
         <members>DataComposerLoginPage</members>
         <members>DataMigrationByRelease</members>
@@ -141,6 +144,7 @@
         <members>Data_Migration_Details__c.Parent_relationship_field__c</members>
         <members>Data_Migration_Details__c.Parent_relationship_name__c</members>
         <members>Data_Migration_Details__c.Sequence__c</members>
+        <members>Enable_Record_Import__c.Import_Allowed__c</members>
         <members>MigrationUtilityUserAccess__c.Export_Access__c</members>
         <members>MigrationUtilityUserAccess__c.Import_Access__c</members>
         <members>Product2.Conversion_Ref_ID__c</members>
@@ -173,6 +177,7 @@
         <members>CPQ_User_Story__c</members>
         <members>Callout_Logs__c</members>
         <members>Data_Migration_Details__c</members>
+        <members>Enable_Record_Import__c</members>
         <members>MigrationUtilityUserAccess__c</members>
         <members>ParentRelationship__mdt</members>
         <members>Product_Validation__c</members>

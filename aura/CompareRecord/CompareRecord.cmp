@@ -1,0 +1,63 @@
+<aura:component controller="RecordComparisonController"> 
+    
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <aura:attribute name="recordDetails" type="Object" /><!-- Bharat -->    
+    <aura:attribute name="externalId" type="String"/><!-- Bharat -->
+    <aura:attribute name="externalIdField" type="String"/><!-- Bharat -->
+    <aura:attribute name="finaldata" type="List"/>
+    <aura:attribute name="ObjectName" type="String"/>
+    <aura:attribute name="objectLabel" type="String"/>
+    <aura:attribute name="instanceDomain" type="String"/>
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="slds-m-around_xx-small">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <aura:if isTrue="{!v.showSpinner}">
+                <lightning:spinner alternativeText="Loading" variant="brand"/>
+            </aura:if>
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Compare:  {!v.objectLabel}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <c:DataComposerLoginPage/>
+                    <p class="slds-p-horizontal_small">
+                        <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><span class="slds-truncate">API Name</span></th>
+                                    <th scope="col"><span class="slds-truncate"> {!v.instanceDomain} </span></th>
+                                    <th scope="col"><span class="slds-truncate"> CPQDev1 </span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                
+                                <aura:iteration items="{!v.finaldata}" var="result" indexVar="key">                                    
+                                    <tr>
+                                        <td><div class="slds-cell-wrap">{!result.key}</div></td>
+                                        <aura:if isTrue="{!result.sourcevalue == result.targetvalue}">
+                                            <td><div class="slds-cell-wrap">{!result.sourcevalue}</div></td>
+                                            <td><div class="slds-cell-wrap">{!result.targetvalue}</div></td>
+                                            <aura:set attribute="else">
+                                                <td bgcolor="lightgoldenrodyellow"><div class="slds-cell-wrap">{!result.sourcevalue}</div></td>
+                                                <td bgcolor="pink"><div class="slds-cell-wrap">{!result.targetvalue}</div></td>
+                                            </aura:set>
+                                        </aura:if>    
+                                    </tr>                                                                        
+                                </aura:iteration>
+                                
+                            </tbody>
+                        </table>                        
+                    </p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button class="slds-button slds-button_brand" label="Close" onclick="{!c.handleClose}"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+</aura:component>
