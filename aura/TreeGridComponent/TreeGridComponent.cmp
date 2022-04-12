@@ -1,0 +1,13 @@
+<aura:component controller="TreeGridGenerator">
+    <aura:attribute name="ltngcurrentRecId" type="String" default="a8T5c0000004PbGEAU"/><!-- 0015c00001zEE5mAAG-->
+	<aura:attribute name="gridColumns" type="list" />
+    <aura:attribute name="gridData" type="Object" />
+    <aura:attribute name="gridExpandedRows" type="List" access="PRIVATE" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <lightning:treeGrid columns="{! v.gridColumns }"
+        data="{! v.gridData }"
+        keyField="name"
+        expandedRows="{! v.gridExpandedRows}"
+        aura:id="mytree" />
+</aura:component>

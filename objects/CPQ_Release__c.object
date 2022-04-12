@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Objects_count__c</fullName>
+        <externalId>false</externalId>
+        <label>Objects count</label>
+        <summaryForeignKey>CPQ_Release_Item__c.CPQ_Release__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>User_stories_count__c</fullName>
+        <externalId>false</externalId>
+        <label>User stories count</label>
+        <summaryForeignKey>CPQ_User_Story__c.CPQ_Release__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+</CustomObject>

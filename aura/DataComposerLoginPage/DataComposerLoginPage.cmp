@@ -1,0 +1,21 @@
+<aura:component controller="LoginToTargetOrg">
+        <aura:attribute name="selectedValue" type="String" access="PRIVATE"/>
+    <aura:attribute name="loginResponse" type="String" access="PRIVATE"/>
+    <aura:attribute name="userNameValue" type="String" access="PRIVATE"/>
+    <aura:attribute name="passwordInfo" type="String" access="PRIVATE"/>
+    
+
+	<lightning:select name="OrgName" label="Select organization" required="true" value="{!v.selectedValue}">
+        <option value="">choose one...</option>
+        <option value="Production">Production</option>
+        <option value="Sandbox">Sandbox</option>
+    </lightning:select>
+    <aura:if isTrue="{!not(empty(v.selectedValue))}">
+        <lightning:input name="userName" label="User Name" value="{!v.userNameValue}" />
+        <lightning:input name="password" type="password" label="Password with Security token" value="{!v.passwordInfo}" />
+        <div class="slds-align_absolute-center" style="height:5rem">
+            <lightning:button variant="brand" label="Brand" title="Login" onclick="{! c.callLoginMethod }" />
+        </div>
+        {!v.loginResponse}
+    </aura:if>
+</aura:component>

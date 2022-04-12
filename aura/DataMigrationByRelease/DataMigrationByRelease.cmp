@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	Complete Release deployment
+    <c:DataTableComponent />
+</aura:component>

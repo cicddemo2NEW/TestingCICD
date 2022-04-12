@@ -1,0 +1,110 @@
+<aura:component controller="DataComposerController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="selectedStep" type="String" default="1"/>
+    <aura:attribute name="objectNameMap" type="Map" />
+    <aura:attribute name="selectedValue" type="String" />    
+    <aura:attribute name="objectLists" type="List"/>
+    <aura:attribute name="selectedRObject" type="List" />
+    
+    <aura:attribute name="selectedObjectsAPIName" type="String" />	<!-- Bharat -->
+    <aura:attribute name="relatedObjectLists" type="List"/>	<!-- Bharat -->
+    <aura:attribute name="filterMap" type="Map"/>	<!-- Bharat -->
+    <aura:attribute name="filter" type="String" />	<!-- Bharat -->
+    <aura:attribute name="filterValues" type="String" />	<!-- Bharat -->
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="slds-modal__container">
+        <!-- Modal/Popup Box Header Starts here-->
+        <header class="slds-modal__header">
+            <lightning:progressIndicator currentStep="{!v.selectedStep}" type="path">
+                <lightning:progressStep label="Select Object" value="1" onclick="{!c.selectStep1}"/>
+                <lightning:progressStep label="Select Related object(s)" value="2" onclick="{!c.selectStep2}"/>
+                <lightning:progressStep label="Retrive records" value="3" onclick="{!c.selectStep3}"/>
+                <lightning:progressStep label="Export" value="4" onclick="{!c.selectStep4}"/>
+            </lightning:progressIndicator>
+        </header>
+        <!--Modal/Popup Box Body Starts here-->
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            
+            <div class="{!v.selectedStep == '1' ? 'slds-show' : 'slds-hide'}">
+                <lightning:layout>
+                    <lightning:layoutItem flexibility="auto" padding="around-small"></lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="around-small">                 
+                        <lightning:select name="ObjectName" label="ObjectName" aura:id="ObjectName" value="{!v.selectedValue}">
+                            <option text="Choose one.." value=""/>
+                            <aura:iteration items="{!v.objectNameMap}" var="option">
+                                <option text="{!option.value}" value="{!option.key}"/>
+                            </aura:iteration>
+                        </lightning:select>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="around-small"></lightning:layoutItem>
+                </lightning:layout>
+            </div>
+            <div class="{!v.selectedStep == '2' ? 'slds-show' : 'slds-hide'}">
+                <lightning:layout >
+                    <lightning:layoutItem  size="5" padding="around-small">
+                        <b>Selected Object Name :</b> {!v.selectedValue}
+                        <lightning:select aura:id="filterPicklist" value="{!v.filter}" onchange="{!c.handleOnChange}" name="filterPicklist" label="Filter Filed" required="true">
+                            <option value="">--None--</option>
+                            <aura:iteration items="{!v.filterMap}" var="i" indexVar="key">
+                                <option text="{!i.value}" value="{!i.key}" selected="{!i.key==v.filter}" />
+                            </aura:iteration>
+                        </lightning:select>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem  size="7" padding="around-small">                 
+                        <c:TreeGridComponent/>
+                        <lightning:checkboxGroup  aura:id="checkbox"
+                                                 name="Checkbox Group"
+                                                 label="Related Objects"
+                                                 options="{! v.objectLists }"
+                                                 value="{! v.selectedRObject }"/>
+                    </lightning:layoutItem>
+                </lightning:layout>    
+                
+                <div class="slds-p-around_medium">
+                    <lightning:textarea name="input7" 
+                                        required="true" 
+                                        value="{!v.filterValues}" 
+                                        placeholder="Provide comma seperated Filter Ids here." 
+                                        label="Required textarea field with a maximum length of 90 characters" 
+                                        maxlength="90" 
+                                        messageWhenTooLong="A maximum of 90 characters are allowed in a tweet." 
+                                        messageWhenValueMissing="An empty tweet cannot be posted."
+                                        class="topText"/>
+                </div>
+                
+            </div>
+            <div class="{!v.selectedStep == '3' ? 'slds-show' : 'slds-hide'}">
+                <!-- below section should dynamic-->
+                <lightning:accordion
+                                     allowMultipleSectionsOpen="true"
+                                     onsectiontoggle="{! c.handleSectionToggle }"
+                                     activeSectionName="{!v.selectedObjectsAPIName}"
+                                     >
+                    
+                    <aura:iteration items="{!v.relatedObjectLists}" var="obj" indexVar="index">                        
+                        
+                        <c:DataTableComponent objectName="{#obj}" filterField="{#v.filter}" parentObjectName="{#v.selectedObjectsAPIName}" filterValues="{#v.filterValues}"/>
+                        
+                    </aura:iteration>
+                    
+                </lightning:accordion>
+            </div>
+            <div class="{!v.selectedStep == '4' ? 'slds-show' : 'slds-hide'}">
+                <p><b>Step 4</b></p>
+            </div>
+        </div>
+        <!--Modal/Popup Box Footer Starts here-->
+        <footer class="slds-modal__footer">
+            <div>
+                <button disabled="{!v.selectedStep != '1' ? '' : 'disabled'}" class="slds-button slds-button--neutral" onclick="{!c.handlePrev}">Back</button>  
+                <aura:if isTrue="{!v.selectedStep != '4'}">
+                    <button class="slds-button slds-button--brand" onclick="{!c.handleNext}">Next</button>
+                </aura:if>
+                <aura:if isTrue="{!v.selectedStep == '4'}">   
+                    <button class="slds-button slds-button--brand" onclick="{!c.handleFinish}">Finish</button>  
+                </aura:if>
+            </div>
+        </footer>
+    </div>
+</aura:component>
