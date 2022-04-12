@@ -3,8 +3,15 @@
     <types>
         <members>AsyncPartnerSoapSforceCom</members>
         <members>CPQUserStoryItemTriggerHandler</members>
+        <members>Callout</members>
+        <members>DataComposerController</members>
         <members>DataMigrationController</members>
+        <members>DeploymentController</members>
+        <members>FC_GetFilterRecordsPlugin</members>
+        <members>Logger</members>
         <members>LoginToTargetOrg</members>
+        <members>QueryResponseJSON</members>
+        <members>RecordImportController</members>
         <members>TreeGridGenerator</members>
         <members>faultPartnerSoapSforceCom</members>
         <members>partnerSoapSforceCom</members>
@@ -21,15 +28,64 @@
         <name>ApexTrigger</name>
     </types>
     <types>
+        <members>DataComposerComponent</members>
         <members>DataComposerLoginPage</members>
         <members>DataMigrationByRelease</members>
         <members>DataMigrationByUserStory</members>
         <members>DataMigrationComponent</members>
+        <members>DataMigrationTable</members>
+        <members>DataTableComponent</members>
+        <members>DeploymentComponent</members>
+        <members>DeploymentItemDetail</members>
+        <members>FujitsuMigrationComponent</members>
+        <members>FujitsuMigrationTable</members>
+        <members>ImportComponent</members>
+        <members>RefreshEvent</members>
+        <members>TestN</members>
         <members>TreeGridComponent</members>
+        <members>confirmFieldsModal</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>
+        <members>Apttus_Approval__ApprovalRuleAssignee__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Approval__ApprovalRuleEntry__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Approval__ApprovalRule__c.Conversion_Ref_ID__c</members>
         <members>Apttus_Approval__Approval_Request__c.Approval_Action__c</members>
+        <members>Apttus_Approval__FormulaField__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Approval__SearchFilter__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__AttributeValueMatrixEntry__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__AttributeValueMatrix__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ClassificationHierarchy__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ClassificationName__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ConfigCustomDisplayActions__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ConfigCustomDisplayColumns__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ConfigFlow__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ConfigSystemProperties__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ConstraintRuleAction__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ConstraintRuleCondition__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ConstraintRule__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__FieldExpression__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__FormulaField__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__PriceDimension__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__PriceListCategory__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__PriceListItem__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__PriceList__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__PriceMatrixEntry__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__PriceMatrix__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__PriceRuleEntry__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__PriceRule__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__PriceRuleset__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ProductAttributeGroupMember__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ProductAttributeGroup__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ProductAttributeRuleAction__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ProductAttributeRule__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ProductAttribute__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ProductClassification__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ProductGroupMember__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__ProductGroup__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__RelatedPriceListItem__c.Conversion_Ref_ID__c</members>
+        <members>Apttus_Config2__SearchFilter__c.Conversion_Ref_ID__c</members>
+        <members>CPQ_Deployment__c.CPQ_Release__c</members>
         <members>CPQ_Release_Item__c.CPQ_Release__c</members>
         <members>CPQ_Release_Item__c.Deployment_Status__c</members>
         <members>CPQ_Release_Item__c.External_Id_API_Field__c</members>
@@ -38,6 +94,8 @@
         <members>CPQ_Release_Item__c.Operation__c</members>
         <members>CPQ_Release_Item__c.Sequence__c</members>
         <members>CPQ_Release_Item__c.uniqueId__c</members>
+        <members>CPQ_Release__c.CPQ_Release__c</members>
+        <members>CPQ_Release__c.Deployment_Date__c</members>
         <members>CPQ_Release__c.Objects_count__c</members>
         <members>CPQ_Release__c.User_stories_count__c</members>
         <members>CPQ_User_Story_Item__c.CPQ_Release__c</members>
@@ -49,28 +107,84 @@
         <members>CPQ_User_Story_Item__c.UniqueId__c</members>
         <members>CPQ_User_Story__c.CPQ_Release__c</members>
         <members>CPQ_User_Story__c.Objects_count__c</members>
+        <members>Callout_Logs__c.Callout_End__c</members>
+        <members>Callout_Logs__c.Callout_Error__c</members>
+        <members>Callout_Logs__c.Callout_Start__c</members>
+        <members>Callout_Logs__c.Callout_Statuscode__c</members>
+        <members>Callout_Logs__c.Callout_Time_ms__c</members>
+        <members>Callout_Logs__c.Callout_URL__c</members>
+        <members>Callout_Logs__c.HeaderRequestedId__c</members>
+        <members>Callout_Logs__c.IVR_Inputs__c</members>
+        <members>Callout_Logs__c.IVR_Output__c</members>
+        <members>Callout_Logs__c.Post_Processing_Time_ms__c</members>
+        <members>Callout_Logs__c.Pre_Processing_Time_ms__c</members>
+        <members>Callout_Logs__c.Process_End__c</members>
+        <members>Callout_Logs__c.Process_Start__c</members>
+        <members>Callout_Logs__c.Process_Time_ms__c</members>
+        <members>Callout_Logs__c.Process__c</members>
+        <members>Callout_Logs__c.Request_Body__c</members>
+        <members>Callout_Logs__c.Response_Body__c</members>
+        <members>Data_Migration_Details__c.Additional_Filters__c</members>
         <members>Data_Migration_Details__c.Child_relationship_field__c</members>
+        <members>Data_Migration_Details__c.Child_relationship_name__c</members>
+        <members>Data_Migration_Details__c.Dynamic_Fields__c</members>
         <members>Data_Migration_Details__c.Fields_to_display__c</members>
         <members>Data_Migration_Details__c.Fields_to_export__c</members>
         <members>Data_Migration_Details__c.Is_Active__c</members>
         <members>Data_Migration_Details__c.Object_API_Name__c</members>
         <members>Data_Migration_Details__c.ParentObject__c</members>
+        <members>Data_Migration_Details__c.Parent_relationship_field__c</members>
+        <members>Data_Migration_Details__c.Parent_relationship_name__c</members>
+        <members>Data_Migration_Details__c.Sequence__c</members>
+        <members>Product2.Conversion_Ref_ID__c</members>
+        <members>Product_Validation__c.Conversion_Ref_ID__c</members>
+        <members>Product_Validation__c.Product_Type__c</members>
+        <members>Product_Validation__c.Product_Value__c</members>
+        <members>System__c.AWS_ApiGateway_URL__c</members>
+        <members>System__c.AWS_S3_Timeout_Threshold__c</members>
+        <members>System__c.Async_Timeout_Threshold__c</members>
+        <members>System__c.Bypass_Validation_Rule__c</members>
+        <members>System__c.Email_Queue__c</members>
+        <members>System__c.FromEmailAddress__c</members>
+        <members>System__c.Get_New_Work_Threshold_Email__c</members>
+        <members>System__c.Get_New_Work_Threshold__c</members>
+        <members>System__c.InternalEmailAddresses__c</members>
+        <members>System__c.Is_Resend_Code_Active__c</members>
+        <members>System__c.Log_Callouts__c</members>
+        <members>System__c.Override_Timeout_Threshold_Flag__c</members>
+        <members>System__c.Override_Timeout_Threshold__c</members>
+        <members>System__c.Prevent_Email_Cases__c</members>
+        <members>System__c.Timeout_Threshold__c</members>
         <name>CustomField</name>
     </types>
     <types>
+        <members>CPQ_Deployment__c</members>
         <members>CPQ_Release_Item__c</members>
+        <members>CPQ_Release__c</members>
         <members>CPQ_User_Story_Item__c</members>
         <members>CPQ_User_Story__c</members>
+        <members>Callout_Logs__c</members>
+        <members>Product_Validation__c</members>
+        <members>System__c</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>CPQ_Deployment__c</members>
+        <members>CPQ_Release__c</members>
+        <members>Callout_Logs__c</members>
+        <members>Data_Composer</members>
         <members>Data_Migration_Details__c</members>
         <members>Data_Migration_Tool</members>
         <name>CustomTab</name>
     </types>
     <types>
+        <members>CPQ_Deployment_Record_Page</members>
         <members>CPQ_Release_Record_Page</members>
         <members>CPQ_User_Story_Record_Page</members>
+        <members>Callout_Logs_Record_Page</members>
+        <members>Data_Composer_UtilityBar</members>
+        <members>DeploymentPage</members>
+        <members>Deployment_Composer_Page</members>
         <name>FlexiPage</name>
     </types>
     <types>
@@ -85,8 +199,25 @@
         <name>Layout</name>
     </types>
     <types>
+        <members>CPQ_Deployment__c.All</members>
+        <members>CPQ_Release__c.All</members>
+        <members>Callout_Logs__c.All</members>
+        <members>Callout_Logs__c.All1</members>
+        <members>Callout_Logs__c.Buyer_System</members>
+        <members>Callout_Logs__c.DT_Automation</members>
+        <members>Callout_Logs__c.LMV</members>
+        <members>Callout_Logs__c.My_Today_s_log</members>
+        <members>Callout_Logs__c.RVS_Log</members>
+        <members>Callout_Logs__c.Rakesh_Perf_Run</members>
+        <members>Callout_Logs__c.Seller_System</members>
+        <members>Callout_Logs__c.Today</members>
         <members>Data_Migration_Details__c.All</members>
+        <members>Product_Validation__c.Bo_s_View</members>
         <name>ListView</name>
+    </types>
+    <types>
+        <members>DataMigrationUtility</members>
+        <name>NamedCredential</name>
     </types>
     <types>
         <members>Require_MFA</members>

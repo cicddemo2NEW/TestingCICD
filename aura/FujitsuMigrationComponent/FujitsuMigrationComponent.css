@@ -1,0 +1,11 @@
+.THIS.slds-modal__container {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width:100%;
+    max-width:100%;
+    min-width:100%;
+}
+.THIS .slds-textarea {
+    height:150px !important;
+}

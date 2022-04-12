@@ -1,0 +1,33 @@
+<aura:component controller="FC_GetFilterRecordsPlugin">
+
+    <aura:attribute name="data" type="Object" />
+    
+    
+    <aura:attribute name="objectName" type="String" /><!-- Bharat -->
+    <aura:attribute name="objectMetadata" type="Object" /><!-- Bharat -->
+    <aura:attribute name="objectData" type="Object" />
+    <aura:attribute name="parentObjectName" type="String" /><!-- Bharat -->
+    <aura:attribute name="filterField" type="String" /><!-- Bharat -->
+    <aura:attribute name="filterValues" type="String" /><!-- Bharat -->
+    <aura:attribute name="objectHeadersList" type="List" />
+    <aura:attribute name="objectHeadersMap" type="Map" />
+    
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="sortDirection" type="String" default="asc" />
+    <aura:attribute name="defaultSortDirection" type="String" default="asc" />
+    <aura:attribute name="sortedBy" type="String" />
+
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+
+    <lightning:datatable
+        keyField="id"
+        columns="{!v.columns }"
+        data="{!v.data}"
+        hideCheckBoxColumn="true"
+        defaultSortDirection="{!v.defaultSortDirection}"
+        sortedDirection="{!v.sortDirection}"
+        sortedBy="{!v.sortedBy}"
+        onsort="{!c.handleSort}">
+    </lightning:datatable>
+
+</aura:component>

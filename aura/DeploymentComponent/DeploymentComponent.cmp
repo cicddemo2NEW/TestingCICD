@@ -1,0 +1,83 @@
+<aura:component controller="DeploymentController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    
+    <aura:attribute name="deploymentRecord" type="Object" />
+    <aura:attribute name="recordLoadError" type="String"/>
+    
+    <aura:attribute name="objects" type="List" />
+    <aura:attribute name="showSpinner" type="boolean" default="false"/>
+      <aura:attribute name="showDeploymentStatusSection" type="boolean" default="true"/>
+    <lightning:navigation aura:id="navService"/>
+    <aura:attribute name="pageReference" type="Object"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <force:recordData aura:id="DeploymentDetail"
+                      recordId="{!v.recordId }"
+                      fields="Id, CPQ_Release__c"
+                      targetFields="{!v.deploymentRecord }"
+                      targetError="{!v.recordLoadError }"
+                      recordUpdated="{!c.getReleaseDetails}">
+    </force:recordData>
+    
+    <div aura:id="dynamicComponent"></div>
+    <aura:if isTrue="{!v.showDeploymentStatusSection}">
+    <lightning:card title="Deployment Status">
+        <p class="slds-p-horizontal_small">
+            <aura:if isTrue="{!v.showSpinner}">                
+                <lightning:spinner variant="brand" 
+                                   alternative-text="Loading Data"     
+                                   size="small">
+                </lightning:spinner>
+            </aura:if>
+            
+            
+            <ol class="slds-setup-assistant"> 
+                <aura:iteration items="{!v.objects}" var="obj" indexVar="index">
+                    <li class="slds-setup-assistant__item">
+                        <article class="slds-setup-assistant__step">
+                            <div class="slds-setup-assistant__step-summary">
+                                <div class="slds-media">
+                                    <div class="slds-media__figure">
+                                        <aura:if isTrue="{#obj.DeploymentStatus == true}">
+                                            <div class="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large">
+                                                <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">                                    						                                    
+                                                </div>
+                                                <div class="slds-progress-ring__content">
+                                                    <span class="slds-icon_container slds-icon-utility-check" title="Complete">                                                
+                                                        <lightning:icon iconName="utility:check" size="x-small" />
+                                                        <span class="slds-assistive-text">Complete</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <aura:set attribute="else">
+                                                <div class="slds-progress-ring slds-progress-ring_large">
+                                                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">                                    						                                    
+                                                    </div>
+                                                    <div class="slds-progress-ring__content">
+                                                        {#index+1}
+                                                    </div>
+                                                </div>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                    <div class="slds-media__body slds-m-top_x-small">
+                                        <div class="slds-media">
+                                            <div class="slds-setup-assistant__step-summary-content slds-media__body">
+                                                <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">{#obj.ObjectLabel}</h3>                                                
+                                              </div>
+                                            <div class="slds-media__figure slds-media__figure_reverse" data-objectapiname="{!obj.ObjectAPIName}" data-ids="{!obj.Ids}" data-objectlabel="{!obj.ObjectLabel}" onclick="{!c.handleVeiw}">
+                                                <button class="slds-button slds-button_outline-brand">View</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                </aura:iteration>
+            </ol>
+            
+        </p>
+    </lightning:card>
+    </aura:if>
+</aura:component>

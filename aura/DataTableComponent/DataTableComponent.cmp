@@ -1,0 +1,100 @@
+<aura:component controller="DataComposerController">
+    
+    <aura:attribute name="data" type="Object" />
+    <aura:attribute name="selectedFields" type="List"/>
+    <aura:attribute name="fieldsToExport" type="String"/>    
+    <aura:attribute name="FilterIdsCount" type="Integer" />
+    <aura:attribute name="FoundRecordsCount" type="Integer" />
+    
+    <aura:attribute name="errorMessage" type="String" />
+    <aura:attribute name="showError" type="Boolean" default="false" />
+    <aura:attribute name="objectName" type="String" default="product2" />
+    <aura:attribute name="objectLabel" type="String" default="Product" />
+    <aura:attribute name="objectMetadata" type="Object" />
+    <aura:attribute name="objectData" type="List" />
+    <aura:attribute name="exportWithId" type="boolean" default="true"/>
+    <aura:attribute name="parentObjectName" type="String" />
+    <aura:attribute name="lookupFieldName" type="String" /><!-- Parent Lookup -->
+    <aura:attribute name="lookupRelationshipName" type="String" />  <!-- Parent Lookup' Relationship Name-->  
+    <aura:attribute name="filterField" type="String" default="Conversion_Ref_ID__c" />
+    <aura:attribute name="filterValues" type="String" default="00D0r0000008azOEAQ_01t0r000001X9DmAAK"/>
+    <aura:attribute name="objectHeadersList" type="List" />
+    <aura:attribute name="objectHeadersMap" type="Map" />
+    <aura:attribute name="showObject" type="boolean" default="false"/>
+    <aura:attribute name="showSpinner" type="boolean" default="false"/>
+    <aura:attribute name="showImport" type="boolean" default="false"/>
+    
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="sortDirection" type="String" default="asc" />
+    <aura:attribute name="defaultSortDirection" type="String" default="asc" />
+    <aura:attribute name="sortedBy" type="String" />
+    
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    <aura:handler name="refreshDataEvent" event="c:RefreshEvent" action="{! c.reIntit }"/>
+    
+    <div aura:id="dynamicComponent"></div>
+	    
+    <aura:if isTrue="{!v.showObject}">
+        <lightning:accordionSection name="{!v.objectName}" label="{!v.objectLabel}">
+            
+            <aura:set attribute="actions">
+                
+                <aura:if isTrue = "{!notequals(v.parentObjectName, v.objectName)}">
+                    <lightning:overlayLibrary aura:id="confirmFieldsAuraId" /> 
+                    <div class="slds-clearfix">
+                        <a href="javascript:void(0)" onclick="{!c.callconfirmFieldsComp}" class="slds-float_left">FieldMapping</a>
+                    </div>                
+                </aura:if>
+                
+                <!--<lightning:button label="Field Mapping 2" class="slds-button"
+									isModalOpen = "true" 
+									selectedObjectsAPIName="{#v.objectName}"
+									selectedFields="{!v.selectedFields}" 
+                					onclick="{!c.confirmFields}" />-->
+                                                
+                <lightning:input type="toggle" class="slds-p-right_x-small" aura:id="tglbtn" onchange="{!c.btnToggleButton}" checked="true" messageToggleActive="Export With Id" messageToggleInactive="Export With Id" />
+                <lightning:button iconName="utility:download" iconPosition="left" label="Export to CSV" onclick="{!c.downloadRecords}" class="slds-button"/>
+                <aura:renderIf isTrue="{!v.showImport}">                  
+                    	<lightning:button label="Import" iconName="utility:arrowdown" iconPosition="left"  class="slds-button" onclick="{!c.handleRetrieveFromOther}" />
+                </aura:renderIf>
+                
+                <aura:renderIf isTrue="{!v.showImport}">                  
+                    	<lightning:button label="Check on other Server testing" iconName="action:preview" iconPosition="left"  class="slds-button" onclick="{!c.handleRetrieveFromOtherparentsdetails}" />
+                </aura:renderIf>
+				
+            </aura:set>
+            <aura:set attribute="body">
+                <lightning:datatable
+                                     keyField="id"
+                                     columns="{!v.columns }"
+                                     data="{!v.data}"
+                                     hideCheckBoxColumn="true"
+                                     defaultSortDirection="{!v.defaultSortDirection}"
+                                     sortedDirection="{!v.sortDirection}"
+                                     sortedBy="{!v.sortedBy}"
+                                     onsort="{!c.handleSort}"
+                                     onrowaction="{!c.handleRowAction}">
+                </lightning:datatable>
+                <aura:renderIf isTrue="{!v.showSpinner}">
+                    <div class="slds-spinner_inline spinner-padding">
+                        <lightning:spinner variant="brand" 
+                                           alternative-text="Loading Data"     
+                                           size="small">
+                        </lightning:spinner>
+                    </div>
+                </aura:renderIf>
+                
+            </aura:set>
+        </lightning:accordionSection>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.showError}">
+        <div class="slds-notify slds-notify_toast slds-theme_error">
+            <span class="slds-assistive-text">error</span>
+            <div class="slds-notify__content">
+                <h5 class="slds-text-heading_small slds-align_absolute-center">Error Message </h5>
+                <br/>
+                <p class="slds-align_absolute-center">{!v.errorMessage}</p>                
+            </div>
+        </div></aura:if>
+</aura:component>

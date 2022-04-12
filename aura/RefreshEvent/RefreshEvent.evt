@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Event template">
+    <aura:attribute name="statusValue" type="String"/>
+    <aura:attribute name="statusType" type="String"/>
+</aura:event>

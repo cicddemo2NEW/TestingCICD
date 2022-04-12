@@ -1,0 +1,7 @@
+<aura:component>
+    
+    <aura:attribute name="selectedFields" type="List" default="Id" access="global" />
+    <lightning:overlayLibrary aura:id="confirmFieldsAuraId"/>
+    <lightning:button name="ok" label="Apply" variant="brand" onclick="{!c.handleOK}"/>
+        
+</aura:component>

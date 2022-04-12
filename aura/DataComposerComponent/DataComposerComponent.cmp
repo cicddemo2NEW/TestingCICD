@@ -1,0 +1,143 @@
+<aura:component controller="DataComposerController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="selectedStep" type="String" default="1"/>
+    <aura:attribute name="objectNameMap" type="Map" />
+    <aura:attribute name="selectedValue" type="String" />    
+    <aura:attribute name="objectList" type="List"/>
+    <aura:attribute name="selectedRObject" type="List" />
+    <aura:attribute name="selectedFields" type="List"/>
+    
+    <aura:attribute name="selectedObjectsAPIName" type="String" />	<!-- Bharat -->
+    <aura:attribute name="relatedObjectList" type="List"/>	<!-- Bharat -->
+    <aura:attribute name="relatedObjectMapList" type="Map"/>	<!-- Bharat -->
+    <aura:attribute name="filterMap" type="Map"/>	<!-- Bharat -->
+    <aura:attribute name="filter" type="String" />	<!-- Bharat -->
+    <aura:attribute name="filterValues" type="String" />	<!-- Bharat -->
+    <aura:attribute name="filterValuesWhere" type="String" default=" where " />
+    <aura:attribute name="lookupFieldName" type="String" /><!-- Parent Lookup -->
+     <aura:attribute name="showErrorMessage_step2" type="boolean" default="false" />
+    <aura:attribute name="lookupRelationshipName" type="String" />  <!-- Parent Lookup' Relationship Name-->  
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="slds-modal__container">
+        <!-- Modal/Popup Box Header Starts here-->
+        <header class="slds-modal__header">
+            <lightning:progressIndicator currentStep="{!v.selectedStep}" type="path">
+                <lightning:progressStep label="Select Object" value="1" />
+                <lightning:progressStep label="Select Related object(s)" value="2" />
+                <lightning:progressStep label="Retrive records" value="3"/>
+                <!--<lightning:progressStep label="Migration records" value="4" onclick="{!c.selectStep4}"/>-->
+            </lightning:progressIndicator>
+        </header>
+        <!--Modal/Popup Box Body Starts here-->
+        <div class="slds-modal__content slds-p-around_medium " id="modal-content-id-1">
+            
+            <aura:if isTrue="{!v.selectedStep == '1'}">
+                <lightning:layout>
+                    <lightning:layoutItem flexibility="auto" padding="around-small"></lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="around-small">      
+                        <lightning:select name="ObjectName" label="Object Name" aura:id="ObjectName" required="true" messageWhenValueMissing="Complete this field" value="{!v.selectedValue}">
+                            <option text="Choose one.." value=""/>
+                            <aura:iteration items="{!v.objectNameMap}" var="option">
+                                <option text="{!option.value}" value="{!option.key}"/>
+                            </aura:iteration>
+                        </lightning:select>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="around-small"></lightning:layoutItem>
+                </lightning:layout>
+            </aura:if>
+            <aura:if isTrue="{!v.selectedStep == '2'}">
+                <aura:if isTrue="{!v.showErrorMessage_step2}">
+                <div class="slds-text-color_destructive slds-text-align_center slds-text-heading_small"><lightning:icon iconName="utility:error" alternativeText="Error!" variant="error" title="error variant x-small"
+            size="x-small" />&nbsp; Please populate where condition(s).</div>
+                </aura:if>
+                <lightning:layout >
+                    <lightning:layoutItem  size="7" padding="around-small">
+                        <div class="slds-text-heading_small">Selected Object Name :<b> {!v.selectedValue}</b></div><br/>
+                        <lightning:tabset variant="scoped">
+                            <lightning:tab  label="Query by Id's" id="Id_ExternalIds" >
+                                       <lightning:icon iconName="utility:info" alternativeText="info!" title="info" size="x-small" />
+										Please use this feature if you are querying up to 200 records. Else we suggest you use the 'Query by condition' feature.
+                                <lightning:select aura:id="filterPicklist2" value="{!v.filter}" onchange="{!c.handleOnChange}" class="width_50" name="filterPicklist" label="Filter Filed" required="true">
+                                    <option value="">--None--</option>
+                                    <aura:iteration items="{!v.filterMap}" var="i" indexVar="key">
+                                        <option text="{!i.value}" value="{!i.key}" selected="{!i.key==v.filter}" />
+                                    </aura:iteration>
+                                </lightning:select>
+                                 <div class="slds-p-top_medium">
+                                    <lightning:textarea name="input7" 
+                                                        required="true" 
+                                                        aura:id="filterTextArea"
+                                                        value="{!v.filterValues}" 
+                                                        placeholder="Provide comma seperated Filter Ids here." 
+                                                        label="Required textarea field"   
+                                                        class="topText"/>
+                                </div>
+                            </lightning:tab>
+                            <lightning:tab  label="Field Mapping" id="fieldmapping" >
+                                <c:confirmFields selectedObjectsAPIName="{#v.selectedObjectsAPIName}" selectedFields="{!v.selectedFields}" />
+                            </lightning:tab>
+                            <lightning:tab  label="Query by Conditions" id="Conditions" >
+                                <div class="slds-p-top_medium">
+                                    <lightning:textarea name="input7WhereConditions" 
+                                                        required="true" 
+                                                        value="{!v.filterValuesWhere}" 
+                                                        placeholder="Provide where conditions here." 
+                                                        label="Where Clause (sample : where createddate=today)"   
+                                                        class="topText"
+                                                        />
+                                </div>
+                            </lightning:tab>
+                        </lightning:tabset>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem  size="5" padding="around-small">        
+                        <c:TreeGridComponent ltngcurrentRecId="{!v.selectedValue}"/>
+                        <!--<lightning:checkboxGroup  aura:id="checkbox"
+                                                 name="Checkbox Group"
+                                                 label="Related Objects"
+                                                 options="{! v.objectList }"
+                                                 value="{! v.selectedRObject }"/>-->
+                    </lightning:layoutItem>
+                </lightning:layout>    
+                
+                
+                
+            </aura:if>
+            <aura:if isTrue="{!v.selectedStep == '3'}">
+                <!-- below section should dynamic-->
+                
+                <lightning:accordion
+                                     allowMultipleSectionsOpen="true"
+                                     onsectiontoggle="{! c.handleSectionToggle }"
+                                     activeSectionName="{!v.selectedObjectsAPIName}"
+                                     >
+                    
+                    <aura:iteration items="{!v.relatedObjectMapList}" var="obj" indexVar="index">     
+
+                        <c:DataTableComponent selectedFields="{!v.selectedFields}" objectName="{#obj.value}" objectLabel="{#obj.label}" lookupFieldName="{#obj.parent_field_name}" lookupRelationshipName="{#obj.parent_relationship_name}" filterField="{#v.filter}" parentObjectName="{#v.selectedObjectsAPIName}" filterValues="{#v.filterValues}"/>
+                        
+                    </aura:iteration>                        
+                </lightning:accordion>
+            </aura:if>
+          <!--  <aura:if isTrue="{!v.selectedStep == '4'}">
+                <p><b>Step 4</b></p>
+            </aura:if>-->
+        </div>
+        <!--Modal/Popup Box Footer Starts here-->
+        <footer class="slds-modal__footer">
+            <div>
+                <button disabled="{!v.selectedStep != '1' ? '' : 'disabled'}" class="slds-button slds-button--neutral" onclick="{!c.handlePrev}">Back</button>
+            
+                <aura:if isTrue="{!or(v.selectedStep == '1',v.selectedStep == '2')}">
+                    <button class="slds-button slds-button--brand" onclick="{!c.handleNext}">Next</button>
+                </aura:if>
+                 <!--<aura:if isTrue="{!v.selectedStep == '3'}">
+                     <button class="slds-button slds-button-/-brand" onclick="{!c.handleNext}">View migrated records</button>
+                </aura:if>-->
+                <aura:if isTrue="{!v.selectedStep == '3'}">   
+                    <button class="slds-button slds-button--brand" onclick="{!c.handleFinish}">Finish</button>  
+                </aura:if>
+            </div>
+        </footer>
+    </div>
+</aura:component>

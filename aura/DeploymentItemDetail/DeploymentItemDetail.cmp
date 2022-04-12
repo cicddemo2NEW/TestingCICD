@@ -1,0 +1,90 @@
+<aura:component controller="DataComposerController">
+    <aura:attribute name="selectedObjectsAPIName" type="String" />
+    <aura:attribute name="filter" type="String" />
+    <aura:attribute name="filterValues" type="String" />
+    <aura:attribute name="filterMap" type="Map"/>	
+    <aura:attribute name="selectedFields" type="List"/>
+    <aura:attribute name="selectedStep" type="String" default="1"/>
+    <aura:attribute name="showErrorMessage_step2" type="boolean" default="false" />
+    <aura:attribute name="relatedObjectMapList" type="Map"/>
+    <aura:attribute name="showDeploymentDetailSection" type="boolean" default="true" />
+    <aura:attribute name="selectedObjectLabel" type="String" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <article class="slds-card">
+        <div class="slds-card__body slds-card__body_inner">
+            <aura:if isTrue="{!v.selectedStep == '1'}">
+                <lightning:layout >
+                    <lightning:layoutItem  size="12" padding="around-small">
+                        <div class="slds-text-heading_small">Selected Object Name :<b> {!v.selectedObjectLabel}</b></div><br/>
+                        <lightning:tabset variant="scoped">
+                            <lightning:tab  label="Query by Id's" id="Id_ExternalIds" >
+                                <lightning:icon iconName="utility:info" alternativeText="info!" title="info" size="x-small" />
+                                Please use this feature if you are querying up to 200 records. Else we suggest you use the 'Query by condition' feature.
+                                <lightning:select aura:id="filterPicklist2" value="{!v.filter}" onchange="{!c.handleOnChange}" class="width_50" name="filterPicklist" label="Filter Filed" required="true">
+                                    <option value="">--None--</option>
+                                    <aura:iteration items="{!v.filterMap}" var="i" indexVar="key">
+                                        <option text="{!i.value}" value="{!i.key}" selected="{!i.key==v.filter}" />
+                                    </aura:iteration>
+                                </lightning:select>
+                                <div class="slds-p-top_medium">
+                                    <lightning:textarea name="input7" 
+                                                        required="true" 
+                                                        aura:id="filterTextArea"
+                                                        value="{!v.filterValues}" 
+                                                        placeholder="Provide comma seperated Filter Ids here." 
+                                                        label="Required textarea field"   
+                                                        class="topText"/>
+                                </div>
+                            </lightning:tab>
+                            <lightning:tab  label="Field Mapping" id="fieldmapping" >
+                                <c:confirmFields selectedObjectsAPIName="{!v.selectedObjectsAPIName}" selectedFields="{!v.selectedFields}" />
+                            </lightning:tab>
+                            <lightning:tab  label="Query by Conditions" id="Conditions" >
+                                <div class="slds-p-top_medium">
+                                    <lightning:textarea name="input7WhereConditions" 
+                                                        required="true" 
+                                                        value="{!v.filterValuesWhere}" 
+                                                        placeholder="Provide where conditions here." 
+                                                        label="Where Clause (sample : where createddate=today)"   
+                                                        class="topText"
+                                                        />
+                                </div>
+                            </lightning:tab>
+                        </lightning:tabset>
+                    </lightning:layoutItem>        
+                </lightning:layout>
+                
+                <aura:if isTrue="{!v.showErrorMessage_step2}">
+                    <div class="slds-text-color_destructive slds-text-align_center slds-text-heading_small">
+                        <lightning:icon iconName="utility:error" alternativeText="Error!" variant="error" title="error variant x-small" size="x-small" />&nbsp; Please populate where condition(s).</div>
+                </aura:if>
+            </aura:if>
+        </div>    
+        <aura:if isTrue="{!v.selectedStep == '2'}">
+            
+            <lightning:accordion
+                                 allowMultipleSectionsOpen="true"
+                                 onsectiontoggle="{! c.handleSectionToggle }"
+                                 activeSectionName="{!v.selectedObjectsAPIName}"
+                                 >            
+                <aura:iteration items="{!v.relatedObjectMapList}" var="obj" indexVar="index">     
+                    
+                    <c:DataTableComponent selectedFields="{!v.selectedFields}" objectName="{#obj.value}" objectLabel="{#obj.label}" lookupFieldName="{#obj.parent_field_name}" lookupRelationshipName="{#obj.parent_relationship_name}" filterField="{#v.filter}" parentObjectName="{#v.selectedObjectsAPIName}" filterValues="{#v.filterValues}"/>
+                    
+                </aura:iteration>                        
+            </lightning:accordion>        
+            
+        </aura:if>
+        <footer class="slds-modal__footer">
+            <div>
+                <aura:if isTrue="{!v.selectedStep == '1'}">
+                    <button class="slds-button slds-button--brand" onclick="{!c.handleNext}">Next</button>
+                </aura:if>                        
+                <aura:if isTrue="{!v.selectedStep == '2'}">                                
+                    <lightning:button label="Done" onclick="{!c.navigateToDeploy}" class="slds-button"/>                
+                </aura:if>                            
+            </div>
+        </footer>
+    </article>
+</aura:component>

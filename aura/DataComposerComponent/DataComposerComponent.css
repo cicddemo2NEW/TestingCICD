@@ -1,0 +1,20 @@
+.THIS.slds-modal__container {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width:100%;
+    max-width:100%;
+    min-width:100%;
+}
+.THIS .slds-textarea {
+    height:150px !important;
+}
+.THIS .width_50{
+    width:50%;
+}/*
+.THIS .cFooterPanel {
+  height: 50px;
+}
+.THIS .cCenterPanel {
+  min-height: calc(100vh - 70px);
+}*/

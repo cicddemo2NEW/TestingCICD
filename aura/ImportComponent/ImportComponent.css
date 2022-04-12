@@ -1,0 +1,12 @@
+.THIS {
+}
+.THIS .slds-modal__container{
+ max-width: 1080px !important;
+ width:960px !important;
+ min-height: 540px !important;
+ height: 600px;
+}
+.THIS .slds-table {
+  width: 100%;
+  table-layout: fixed;
+}

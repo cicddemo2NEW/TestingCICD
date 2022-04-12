@@ -132,17 +132,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>CPQ_Release_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>CPQ_Release_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>Deployment_Composer_Page</content>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -161,53 +158,28 @@
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>CPQ_Release__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
+        <deleteConstraint>Restrict</deleteConstraint>
         <externalId>false</externalId>
         <label>CPQ Release</label>
         <referenceTo>CPQ_Release__c</referenceTo>
-        <relationshipLabel>Revision</relationshipLabel>
-        <relationshipName>CPQ_Release</relationshipName>
-        <required>false</required>
+        <relationshipLabel>CPQ Deployment</relationshipLabel>
+        <relationshipName>CPQ_Deployment</relationshipName>
+        <required>true</required>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
-    <fields>
-        <fullName>Deployment_Date__c</fullName>
-        <externalId>false</externalId>
-        <label>Deployment Date</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>Objects_count__c</fullName>
-        <externalId>false</externalId>
-        <label>Objects count</label>
-        <summaryForeignKey>CPQ_Release_Item__c.CPQ_Release__c</summaryForeignKey>
-        <summaryOperation>count</summaryOperation>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
-    </fields>
-    <fields>
-        <fullName>User_stories_count__c</fullName>
-        <externalId>false</externalId>
-        <label>User stories count</label>
-        <summaryForeignKey>CPQ_User_Story__c.CPQ_Release__c</summaryForeignKey>
-        <summaryOperation>count</summaryOperation>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
-    </fields>
-    <label>CPQ Release</label>
+    <label>CPQ Deployment</label>
     <listViews>
         <fullName>All</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
-        <label>CPQ Release Name</label>
-        <type>Text</type>
+        <displayFormat>D-{00000}</displayFormat>
+        <label>CPQ Deployment Name</label>
+        <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>CPQ Release</pluralLabel>
+    <pluralLabel>CPQ Deployment</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

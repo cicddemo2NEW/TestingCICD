@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Conversion_Ref_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>This field would be used as unique identifier for data migration for External systems</description>
+        <externalId>true</externalId>
+        <label>Conversion Ref ID</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+</CustomObject>

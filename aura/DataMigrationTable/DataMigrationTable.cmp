@@ -1,0 +1,57 @@
+<aura:component controller="DataComposerController">
+    
+    <aura:attribute name="data" type="Object" />
+    
+    
+    <aura:attribute name="objectName" type="String" /><!-- Bharat -->
+    <aura:attribute name="objectMetadata" type="Object" /><!-- Bharat -->
+    <aura:attribute name="objectData" type="List" /><!-- Bharat -->
+    <aura:attribute name="exportWithId" type="boolean" default="true"/><!-- Bharat -->
+    <aura:attribute name="parentObjectName" type="String" /><!-- Bharat -->
+    <aura:attribute name="relationshipName" type="String" /><!-- Bharat -->
+    <aura:attribute name="filterField" type="String" /><!-- Bharat -->
+    <aura:attribute name="filterValues" type="String" /><!-- Bharat -->
+    <aura:attribute name="objectHeadersList" type="List" /><!-- Bharat -->
+    <aura:attribute name="objectHeadersMap" type="Map" /><!-- Bharat -->
+    <aura:attribute name="showObject" type="boolean" default="false"/><!-- Bharat -->
+    <aura:attribute name="showSpinner" type="boolean" default="false"/><!-- Bharat -->
+    
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="sortDirection" type="String" default="asc" />
+    <aura:attribute name="defaultSortDirection" type="String" default="asc" />
+    <aura:attribute name="sortedBy" type="String" />
+    
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+    <div aura:id="dynamicCompare"></div>
+    
+    <aura:if isTrue="{!v.showObject}">
+        <lightning:accordionSection name="{!v.objectName}" label="{!v.objectName}">
+            <aura:set attribute="actions">
+                <lightning:input type="toggle" class="slds-p-right_x-small" aura:id="tglbtn" onchange="{!c.btnToggleButton}" checked="true" messageToggleActive="Export With Id" messageToggleInactive="Export With Id" />
+                <lightning:button iconName="utility:download" iconPosition="left" label="Export to CSV" onclick="{!c.downloadRecords}" class="slds-button"/>
+            </aura:set>
+            <aura:set attribute="body">
+                <lightning:datatable
+                                     keyField="id"
+                                     columns="{!v.columns }"
+                                     data="{!v.data}"
+                                     hideCheckBoxColumn="true"
+                                     defaultSortDirection="{!v.defaultSortDirection}"
+                                     sortedDirection="{!v.sortDirection}"
+                                     sortedBy="{!v.sortedBy}"
+                                     onsort="{!c.handleSort}"
+                                     onrowaction="{!c.handleRowAction}">
+                </lightning:datatable>
+                <aura:renderIf isTrue="{!v.showSpinner}">
+                    <div class="slds-spinner_inline spinner-padding">
+                        <lightning:spinner variant="brand" 
+                                           alternative-text="Loading Cases"     
+                                           size="small">
+                        </lightning:spinner>
+                    </div>
+                </aura:renderIf>
+            </aura:set>
+        </lightning:accordionSection>
+    </aura:if>
+</aura:component>
