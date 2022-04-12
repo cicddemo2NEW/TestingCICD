@@ -18,6 +18,7 @@
         <members>RecordImportControllerTestdemo</members>
         <members>TreeGridGenerator</members>
         <members>faultPartnerSoapSforceCom</members>
+        <members>getFieldListController</members>
         <members>getParentClass</members>
         <members>partnerSoapSforceCom</members>
         <members>sobjectPartnerSoapSforceCom</members>
@@ -50,8 +51,18 @@
         <members>RefreshEvent</members>
         <members>TestN</members>
         <members>TreeGridComponent</members>
+        <members>confirmFields</members>
         <members>confirmFieldsModal</members>
+        <members>modalforConfirmFields</members>
         <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>DataMigrationUtility</members>
+        <name>ConnectedApp</name>
+    </types>
+    <types>
+        <members>Data_Composer</members>
+        <name>CustomApplication</name>
     </types>
     <types>
         <members>Apttus_Approval__ApprovalRuleAssignee__c.Conversion_Ref_ID__c</members>
@@ -191,6 +202,7 @@
         <members>Data_Composer</members>
         <members>Data_Migration_Details__c</members>
         <members>Data_Migration_Tool</members>
+        <members>Fields_Selection</members>
         <name>CustomTab</name>
     </types>
     <types>

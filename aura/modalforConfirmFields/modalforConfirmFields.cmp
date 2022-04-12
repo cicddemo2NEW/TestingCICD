@@ -1,0 +1,15 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	
+    <div class="slds-modal__container">
+    	<div class="slds-modal__header">
+      		<h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Field Mapping</h1>
+    	</div>
+    	<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+      	</div>
+    	<div class="slds-modal__footer">
+      		<button class="slds-button slds-button_brand">Apply</button>
+    	</div>
+  	</div>
+	<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+      
+</aura:component>

@@ -1,0 +1,43 @@
+<aura:component controller="getFieldListController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	
+    <aura:attribute name="fieldsList" type="List" default="[{'label': 'Id', 'value': 'Id'}]" />
+    <aura:attribute name="autoSelectedFieldsList" type="List" />
+    <aura:attribute name="selectedObjectsAPIName" type="String" access="global" />
+    <aura:attribute name="selectedFields" type="List" default="Id" access="global" />
+	<aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <lightning:overlayLibrary aura:id="confirmFieldsAuraId" /> 
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!v.isModalOpen}">
+    	<div class="slds-modal__container">
+            <header class="slds-modal__header">
+				
+   			</header>
+			<div class="slds-modal__content slds-p-around_medium " id="modal-content-id-1">
+				<lightning:checkboxGroup aura:id="Checkbox"
+                             name="CheckboxGroup"
+                             label="Select the fields"
+                             options="{!v.fieldsList}"
+                             value="{!v.selectedFields}"
+                             onchange="{!c.handleChange}"/>
+            </div>
+            <footer class="slds-modal__footer">
+                	<lightning:button variant="neutral"
+                    		label="Apply"
+                            title="Apply"
+                            onclick="{!c.closeModal }"/>
+            </footer>
+       	</div>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    <aura:set attribute="else"> 
+    	<lightning:checkboxGroup aura:id="Checkbox"
+                             name="CheckboxGroup"
+                             label="Select the fields"
+                             options="{!v.fieldsList}"
+                             value="{!v.selectedFields}"
+                             onchange="{!c.handleChange}"/>
+    </aura:set>
+    </aura:if>
+    
+</aura:component>
