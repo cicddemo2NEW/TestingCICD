@@ -10,10 +10,13 @@
         <members>FC_GetFilterRecordsPlugin</members>
         <members>Logger</members>
         <members>LoginToTargetOrg</members>
+        <members>MigrationUtilityClass</members>
         <members>QueryResponseJSON</members>
         <members>RecordImportController</members>
+        <members>RecordImportControllerTestdemo</members>
         <members>TreeGridGenerator</members>
         <members>faultPartnerSoapSforceCom</members>
+        <members>getParentClass</members>
         <members>partnerSoapSforceCom</members>
         <members>sobjectPartnerSoapSforceCom</members>
         <name>ApexClass</name>
@@ -40,6 +43,7 @@
         <members>FujitsuMigrationComponent</members>
         <members>FujitsuMigrationTable</members>
         <members>ImportComponent</members>
+        <members>ImportComponentDemo</members>
         <members>RefreshEvent</members>
         <members>TestN</members>
         <members>TreeGridComponent</members>
@@ -128,6 +132,7 @@
         <members>Data_Migration_Details__c.Child_relationship_field__c</members>
         <members>Data_Migration_Details__c.Child_relationship_name__c</members>
         <members>Data_Migration_Details__c.Dynamic_Fields__c</members>
+        <members>Data_Migration_Details__c.Fields_for_Mapping__c</members>
         <members>Data_Migration_Details__c.Fields_to_display__c</members>
         <members>Data_Migration_Details__c.Fields_to_export__c</members>
         <members>Data_Migration_Details__c.Is_Active__c</members>
@@ -136,6 +141,8 @@
         <members>Data_Migration_Details__c.Parent_relationship_field__c</members>
         <members>Data_Migration_Details__c.Parent_relationship_name__c</members>
         <members>Data_Migration_Details__c.Sequence__c</members>
+        <members>MigrationUtilityUserAccess__c.Export_Access__c</members>
+        <members>MigrationUtilityUserAccess__c.Import_Access__c</members>
         <members>Product2.Conversion_Ref_ID__c</members>
         <members>Product_Validation__c.Conversion_Ref_ID__c</members>
         <members>Product_Validation__c.Product_Type__c</members>
@@ -159,11 +166,15 @@
     </types>
     <types>
         <members>CPQ_Deployment__c</members>
+        <members>CPQ_Migration_Objects__mdt</members>
         <members>CPQ_Release_Item__c</members>
         <members>CPQ_Release__c</members>
         <members>CPQ_User_Story_Item__c</members>
         <members>CPQ_User_Story__c</members>
         <members>Callout_Logs__c</members>
+        <members>Data_Migration_Details__c</members>
+        <members>MigrationUtilityUserAccess__c</members>
+        <members>ParentRelationship__mdt</members>
         <members>Product_Validation__c</members>
         <members>System__c</members>
         <name>CustomObject</name>
@@ -196,6 +207,7 @@
         <members>CPQ_Release__c-CPQ Release Layout</members>
         <members>CPQ_User_Story_Item__c-CPQ User Story Item Layout</members>
         <members>CPQ_User_Story__c-CPQ User Story Layout</members>
+        <members>ParentRelationship__mdt-ParentRelationship Layout</members>
         <name>Layout</name>
     </types>
     <types>
@@ -216,6 +228,7 @@
         <name>ListView</name>
     </types>
     <types>
+        <members>DataComposerCPQDev1</members>
         <members>DataMigrationUtility</members>
         <name>NamedCredential</name>
     </types>

@@ -1,0 +1,112 @@
+<aura:component controller="RecordImportController">
+    <aura:attribute name="filterField" type="String"/><!-- externalId -->
+    <aura:attribute name="filterValues" type="String"/>
+    <aura:attribute name="fieldsToExport" type="String"/>
+    <aura:attribute name="isImportEnabled" type="Boolean" default="false" />
+    <aura:attribute name="objectData" type="List" />
+    
+    <aura:attribute name="objectName" type="String"/>
+    <aura:attribute name="lookupFieldName" type="String" />
+    <aura:attribute name="dynamicFields" type="String" />
+    <aura:attribute name="lookupRelationshipName" type="String" />
+    <aura:attribute name="temp" type="String" /><!-- to capture -->
+    <aura:attribute name="message" type="String" default="Loading.."/>
+    <aura:attribute name="showSpinner" type="boolean" default="false"/>
+    <aura:attribute name="allFields" type="List" default="['Id','Name','Apttus_Config2__AccountScopeOper__c','Apttus_Config2__Action__c']"/>
+    <aura:attribute name="FilterIdsCount" type="Integer"/>
+    
+    <aura:attribute name="query" type="String"/>
+    
+    <aura:attribute name="finaldata" type="List"/>
+    <aura:attribute name="finaldataParent" type="string"/> <!--pankaj-->
+    <aura:attribute name="recordDetails" type="Object" /><!--pankaj-->
+    <aura:attribute name="showParent" type="Boolean" default="false" /> <!--pankaj-->
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:registerEvent name="refreshDataEvent" type="c:RefreshEvent"/>
+    
+    <div class="slds-m-around_xx-small">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <aura:if isTrue="{!v.showSpinner}">                
+                <lightning:spinner variant="brand" 
+                                   alternative-text="Loading Data"     
+                                   size="small">
+                </lightning:spinner>
+            </aura:if>
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Import Wizard  {!v.recordDetails}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p class="slds-p-horizontal_small">
+                         <lightning:button  iconName="utility:download" iconPosition="left" label="ParentConRefIdCheck" onclick="{!c.checkParentConRefId}" class="slds-button"/>
+                        <lightning:accordion aura:id="accordion" allowMultipleSectionsOpen="true" onsectiontoggle="{!c.collapseAccordian}">
+                            <aura:if isTrue="{!not(empty(v.finaldata))}">
+                                <p> Showing keyresults for {!v.FilterIdsCount} Ids</p>
+                                
+                                <aura:if isTrue="{!v.showParent}">
+                                      <div class="demo-only" style="padding:0.5rem;background:#16325c">
+                                          
+                                             <div class="slds-text-color_inverse">{!v.finaldataParent}</div>
+                          
+                                    </div>
+                                    </aura:if>
+                                  
+                                    <aura:iteration items="{!v.finaldata}" var="record" indexVar="index">
+                                        
+                                        
+                                        
+                                        <lightning:accordionSection name="{!record.key}" label="{!record.name}" >
+                                            
+                                            
+                                            <aura:set attribute="actions">                                        
+                                                <lightning:button value="{!record.key}" iconName="utility:download" iconPosition="left" label="Import" onclick="{!c.ImportRecord}" class="slds-button"/>
+                                               
+                                            </aura:set>
+                                            <aura:set attribute="body">
+                                                <table class="slds-table slds-table--cell-buffer slds-table_bordered slds-table_col-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col"><span class="slds-truncate">API Name</span></th>     
+                                                            <th scope="col"><span class="slds-truncate">Current Org </span></th>
+                                                            <th scope="col"><span class="slds-truncate">Target Org. </span></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <aura:iteration items="{!record.value}" var="fields" indexVar="key">
+                                                            <aura:if isTrue="{!fields.key != 'attributes'}">
+                                                                <tr>
+                                                                    <td><div class="slds-cell-wrap">{!fields.key}</div></td>
+                                                                    <aura:if isTrue="{!fields.sourcevalue == fields.targetvalue}">
+                                                                        <td><div class="slds-cell-wrap">{!fields.sourcevalue}</div></td>
+                                                                        <td><div class="slds-cell-wrap">{!fields.targetvalue}</div></td>
+                                                                        <aura:set attribute="else">
+                                                                            <td bgcolor="pink"><div class="slds-cell-wrap">{!fields.sourcevalue}</div></td>
+                                                                            <td bgcolor="lightgoldenrodyellow"><div class="slds-cell-wrap">{!fields.targetvalue}</div></td>
+                                                                        </aura:set>
+                                                                    </aura:if>
+                                                                </tr>
+                                                            </aura:if>
+                                                        </aura:iteration>
+                                                    </tbody>
+                                                </table>
+                                            </aura:set>
+                                        </lightning:accordionSection>                                
+                                    </aura:iteration>
+                                    <aura:set attribute="else">
+                                        {!v.message}
+                                    </aura:set>    
+                                </aura:if>
+                            </lightning:accordion>
+                        </p>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning:button class="slds-button slds-button_neutral" label="Cancel" onclick="{!c.handleCancel}"/>
+                        <lightning:button class="slds-button slds-button_brand" disabled="{!empty(v.finaldata) || !v.isImportEnabled}" label="Import All" onclick="{!c.handleImportAll}"/>    
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </aura:component>
